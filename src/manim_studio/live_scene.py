@@ -231,21 +231,17 @@ class Result(%s):
         code = ""
         for name, value_tracker in self.value_trackers.items():
             if isinstance(value_tracker, BooleanValueTracker):
-                code += f"\n        self.{
-                    name} = BooleanValueTracker({value_tracker.get_value()})"
+              code += f"\n        self.{name} = BooleanValueTracker({value_tracker.get_value()})"
             elif isinstance(value_tracker, ColorValueTracker):
                 value = value_tracker.get_value()
                 hex_ = value[0]
                 alpha = value[1]
                 r, g, b = color_to_rgb(hex_)
-                code += f"\n        self.{
-                    name} = ColorValueTracker(np.array([{r}, {g}, {b}, {alpha}]))"
+                code += f"\n        self.{name} = ColorValueTracker(np.array([{r}, {g}, {b}, {alpha}]))"
             elif isinstance(value_tracker, IntValueTracker):
-                code += f"\n        self.{
-                    name} = IntValueTracker({value_tracker.get_value()})"
+                code += f"\n        self.{name} = IntValueTracker({value_tracker.get_value()})"
             elif isinstance(value_tracker, StringValueTracker):
-                code += f"\n        self.{
-                    name} = StringValueTracker({value_tracker.get_value()})"
+                code += f"\n        self.{name} = StringValueTracker({value_tracker.get_value()})"
         return code
 
     def run_instruction(self):
@@ -417,8 +413,7 @@ class Result(%s):
             alert.setStandardButtons(QMessageBox.StandardButton.Ok)
             alert.exec()
             return
-        code = f"self.{dialog.name_edit.text()} = load_mobject('{
-            file_name[0]}')"
+        code = f"self.{dialog.name_edit.text()} = load_mobject('{file_name[0]}')"
         self.communicate.update_scene.emit(code)
         alert = QMessageBox(
             text="The mobject has been loaded.")

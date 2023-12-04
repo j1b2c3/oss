@@ -6,7 +6,6 @@ from .editor_widget import EditorWidget
 from .preview_widget import PreviewWidget
 from .live_scene import LiveScene
 from .communicate import Communicate
-from .ai_widget import AIWidget
 from .get_icon_file import get_icon_file
 from .inherits_dialog import InheritsDialog
 
@@ -26,9 +25,6 @@ def main(scene_type=LiveScene, server=False, namespace=None, preview=False) -> N
     preview_window = PreviewWidget(communicate, scene, (w, h), preview)
     preview_window.show()
     editor_window.show()
-    if AIWidget is not None:
-        ai_window = AIWidget(communicate)
-        ai_window.show()
     if server:
         from .server import ManimStudioServer
         server_window = ManimStudioServer(communicate, editor_window)
